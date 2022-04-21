@@ -1,0 +1,6 @@
+{
+	"/logs": {
+		"class": "calculator_central_test\\api\\Calculate",
+        "method": "getLogs"
+	}
+}

@@ -1,0 +1,13 @@
+SetEnv HTACCESS on
+
+
+<IfModule mod_rewrite.c>
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+RewriteEngine On
+RewriteRule api/v1/helloWorld /index.php [NC,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule api/v1/(.*)$ api/v1/index.php?REQUEST_URI=$1 [QSA,NC,L]
+</IfModule>

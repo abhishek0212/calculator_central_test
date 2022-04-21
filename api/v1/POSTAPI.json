@@ -1,0 +1,11 @@
+{
+	"/multiplication": {
+		"class": "calculator_central_test\\api\\Calculate",
+        "method": "multiplication"
+	},
+	"/division" : {
+		"class": "calculator_central_test\\api\\Calculate",
+        "method": "division"
+	}
+
+}
