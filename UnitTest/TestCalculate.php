@@ -23,7 +23,6 @@ class TestCalculate extends TestCase
 		$this->calculate->division(["a" => 20, "b" => 2]);
 		$ret = $this->calculate->getReplyPkt();
 		$this->assertEquals(200, $ret->code);
-		$this->calculate->payloadHandler->emptyPayload();
 	}
 
 	public function testDivisionByZero()
@@ -52,7 +51,6 @@ class TestCalculate extends TestCase
 		$this->calculate->multiplication(["a" => 20, "b" => 2]);
 		$ret = $this->calculate->getReplyPkt();
 		$this->assertEquals(200, $ret->code);
-		$this->calculate->payloadHandler->emptyPayload();
 	}
 
 	public function testMultiplicationNoParams()
@@ -60,7 +58,6 @@ class TestCalculate extends TestCase
 		$this->calculate->multiplication([]);
 		$ret = $this->calculate->getReplyPkt();
 		$this->assertEquals(400, $ret->code);
-		$this->calculate->payloadHandler->emptyPayload();
 	}
 
 	public function testMultiplicationMissingParams()
@@ -68,12 +65,18 @@ class TestCalculate extends TestCase
 		$this->calculate->multiplication(["a" => 20]);
 		$ret = $this->calculate->getReplyPkt();
 		$this->assertEquals(400, $ret->code);
-		$this->calculate->payloadHandler->emptyPayload();
+	}
+
+	public function testGetLogs()
+	{
+		$this->calculate->getLogs(["page" => 1, "per_page" => 2]);
+		$ret = $this->calculate->getReplyPkt();
+		$this->assertEquals(200, $ret->code);
 	}
 
 	public function teardown() :void
 	{
-
+		$this->calculate->payloadHandler->emptyPayload();
 	}
 
 }
